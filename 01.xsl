@@ -14,8 +14,9 @@
     <h1>Выбрать людей, у которых "длинный" логин (длиннее трех символов).</h1>
     <xsl:apply-templates select="persons/person/login[string-length(text()) &gt; 3]"/>
     <h1>Выбрать для каждого человека по одному его контакту - мобильный телефон, рабочий телефон или email (что-нибудь одно, все равно что)</h1>
+    <xsl:apply-templates select="persons/person[phone or email]"/>
     <h1>Выбрать для каждого контакта его рабочий телефон, если нет рабочего, то мобильный, если нет никакого телефона, то email.</h1>
-    <xsl:apply-templates select="persons/person[phone/@type='work' or phone/@type='mobile' or email]"/>
+    <xsl:apply-templates select="persons/person[phone or email]"/>
   </xsl:template>
 
   <xsl:template match="//login">
